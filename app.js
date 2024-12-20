@@ -1,32 +1,7 @@
 //add and remove items
 
-let total=0
-/*var add=getelement('plus')
-var remove=getelement('minus')
-var quantity_display1=getelement('quantity_1')
-let quantity_1=0
-var add_2=getelement('plus_2')
-var remove_2=getelement('minus_2')
-var quantity_display2=getelement('quantity_2')
-let quantity_2=0
-var add_3=getelement('plus_3')
-var remove_3=getelement('minus_3')
-var quantity_display3=getelement('quantity_3')*/
 
 
-/*const updatequantity_1=()=>{quantity_display2.textContent=quantity_1}
-const updatequantity_2=()=>{quantity_display3.textContent=quantity_2}
-add.addEventListener('click',()=>{ quantity++; updatequantity();})
-remove.addEventListener('click',()=>{ if (quantity>0){quantity--;} updatequantity();})
-
-
-add_2.addEventListener('click',()=>{ quantity_1++; updatequantity_1();})
-remove_2.addEventListener('click',()=>{ if (quantity_1>0){quantity_1--;} updatequantity_1();})
-    
-add_3.addEventListener('click',()=>{ quantity_2++; updatequantity_2();})
-remove_3.addEventListener('click',()=>{ if (quantity_2>0){quantity_2--;} updatequantity_2();})*/
-    
-//add items
 let quantity = 0;
 function add_items() {
     let add_buttons = document.querySelectorAll('.add');
@@ -37,6 +12,7 @@ function add_items() {
         
         const updatequantity = () => {
             quantity_display.textContent = quantity;
+            updatetotalprice()
         };
         
         add_button.addEventListener('click', () => {
@@ -61,6 +37,7 @@ function minus_items() {
    
         const updatequantity = () => {
             quantity_display.textContent = quantity;
+            updatetotalprice()
         };
 
         minus_button.addEventListener('click', () => {
@@ -112,20 +89,24 @@ minus_items();
         //total
 function updatetotalprice(){
     const items=document.querySelectorAll('.item')
-    let total=0
+    let total=0 
 
-    items.forEach(item =>{
-        const priceElement = item.querySelector('.item-price').innerHTML;
+    items.forEach((item) =>{
+        const priceElement = item.querySelector('.item-price').getAttribute('data-price');
         const price=parseFloat(priceElement)
-       
+        const quantityElement=item.querySelector('.quantity').textContent;
+        const quantity=parseInt(quantityElement)
         total+=price*quantity;
     })
-    document.getElementById('total').textContent=`$${total.toFixed(2)}`
+    document.querySelector('.total').textContent=`$${total.toFixed(2)}`
+
+    
     
 }
 
-document.querySelectorAll('.quantity').forEach(input =>{
-    input.addEventListener('click',updatetotalprice)
-});
+
 
 updatetotalprice();
+
+
+console.log(document.querySelector('.item-price').getAttribute('data-price'))
