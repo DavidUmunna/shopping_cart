@@ -33,8 +33,6 @@ function minus_items() {
 
     minus_buttons.forEach((minus_button) => {
         let quantity_display = minus_button.closest('.item').querySelector('.quantity');
-       
-   
         const updatequantity = () => {
             quantity_display.textContent = quantity;
             updatetotalprice()
@@ -52,37 +50,33 @@ function minus_items() {
 minus_items();
 
         //likes
-       
         
-        function likes(){
-            let heart=document.querySelectorAll('.heart')
-            heart.forEach((heart)=>{
-                heart.addEventListener('click',()=>{
-                    heart.style.color=heart.style.color==='red'? "black":"red"
-                })
-            });
-        }
-        likes()
+function likes(){
+    let heart=document.querySelectorAll('.heart')
+    heart.forEach((heart)=>{
+        heart.addEventListener('click',()=>{
+            heart.style.color=heart.style.color==='red'? "black":"red"
+        })
+    });
+}
+likes()
 
         //remove items
         
         
 
-        function delete_card(){
-            let trash=document.querySelectorAll('.trash')
-            trash.forEach((trash)=>{
-                trash.addEventListener('click',()=>{
-                    let card = trash.closest('.item')
-                    if (card){
-                        card.remove();
-                    }
-                })
-            })
-
-        }
-
-        delete_card()
-
+function delete_card(){
+    let trash=document.querySelectorAll('.trash')
+    trash.forEach((trash)=>{
+        trash.addEventListener('click',()=>{
+            let card = trash.closest('.item')
+            if (card){
+                card.remove();
+            }
+        })
+    })
+}
+delete_card()
         
 
 
